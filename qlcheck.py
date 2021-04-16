@@ -41,7 +41,6 @@ parser.add_argument('--noHeaders', help='Indicate CSV files contain no header ro
 parser.add_argument('--justIncomplete', help='Just show lab results for incomplete labs', action='store_true')
 parser.add_argument('--completeThreshold', help='Set the threshold for an assignment to be considered complete', default=100)
 args = parser.parse_args()
-print(args)
 
 if not isfile(args.students):
     print(f'Student file {args.students} does not exist')
@@ -115,8 +114,9 @@ for labName in sorted(labs):
         completionsByLab[labName][studentEmail] = 0
 
 for attempt in studentAttempts:
-    if int(attempt.attempt.percentComplete) > int(completionsByLab[attempt.lab.labName][attempt.student.email]):
-        completionsByLab[attempt.lab.labName][attempt.student.email] = attempt.attempt.percentComplete
+    if attempt.lab.labName in completionsByLab:
+        if int(attempt.attempt.percentComplete) > int(completionsByLab[attempt.lab.labName][attempt.student.email]):
+            completionsByLab[attempt.lab.labName][attempt.student.email] = attempt.attempt.percentComplete
 
 # Print the results
 print('')
