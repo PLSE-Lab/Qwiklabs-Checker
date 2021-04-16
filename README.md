@@ -2,7 +2,7 @@ If you use Qwiklabs in your classes, you currently have to download a report and
 
 # Getting Started
 
-To get started, you need Python version 3.7 or greater. This is required since the script uses Data Classes, which were added in that version. You should also run `pip install -r requirements.txt` to install the required libraries.
+To get started, you need Python version 3.7 or greater. This is required since the script uses Data Classes, which were added in that version.
 
 # Input Formats
 
