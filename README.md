@@ -56,6 +56,7 @@ The checker accepts the following command-line arguments:
 * `--noHeaders`, to indicate the CSV files do not include a header row (the default assumes they do)
 * `--completeThreshold`, to indicate the score needed to consider the lab complete (the default is 100)
 * `--justIncomplete`, to only show students that have not completed a given lab
+* `--justComplete`, to only show students that have completed a given lab
 
 An example of running the checker would be the following:
 ```
