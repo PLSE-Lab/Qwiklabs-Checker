@@ -39,6 +39,7 @@ parser.add_argument('--lab', help='Check completion for a specific named lab', r
 parser.add_argument('--labs', help='A CSV file containing a list of Qwiklabs', required=True)
 parser.add_argument('--noHeaders', help='Indicate CSV files contain no header row', default=False)
 parser.add_argument('--justIncomplete', help='Just show lab results for incomplete labs', action='store_true')
+parser.add_argument('--justComplete', help='Just show lab results for complete labs', action='store_true')
 parser.add_argument('--completeThreshold', help='Set the threshold for an assignment to be considered complete', default=100)
 args = parser.parse_args()
 
@@ -126,6 +127,9 @@ for labName in sorted(labs):
         for studentEmail in sorted(students):
             if args.justIncomplete:
                 if int(completionsByLab[labName][studentEmail]) < args.completeThreshold:
+                    print(f'{studentEmail}: {completionsByLab[labName][studentEmail]}')
+            elif args.justComplete:
+                if int(completionsByLab[labName][studentEmail]) >= args.completeThreshold:
                     print(f'{studentEmail}: {completionsByLab[labName][studentEmail]}')
             else:
                 print(f'{studentEmail}: {completionsByLab[labName][studentEmail]}')
